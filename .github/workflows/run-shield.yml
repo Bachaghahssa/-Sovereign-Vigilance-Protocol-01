@@ -1,0 +1,77 @@
+# Run Shield command: trigger by an issue/PR comment "/run-shield"
+# Only the user @Bachaghahssa can trigger it. It checks out the repo,
+# sets up Python, installs requirements (if present), runs Sovereign_Kernel.py,
+# captures stdout/stderr to kernel.log and posts a result comment.
+name: Run Shield command
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  run-shield:
+    if: >-
+      github.event.comment.user.login == 'Bachaghahssa' && startsWith(github.event.comment.body, '/run-shield')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Acknowledge command
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const commentBody = context.payload.comment.body.trim();
+            const issueNumber = context.payload.issue.number;
+            const commenter = context.payload.comment.user.login;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: `Received \`/run-shield\` from @${commenter}. Starting Sovereign Kernel...`
+            });
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Sovereign Kernel
+        id: run_kernel
+        continue-on-error: true
+        run: |
+          # Run the kernel, capture stdout/stderr to kernel.log and save the exit code.
+          python Sovereign_Kernel.py > kernel.log 2>&1 || true
+          echo "$?" > exit_status.txt
+
+      - name: Report result
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const issueNumber = context.payload.issue.number;
+            const commenter = context.payload.comment.user.login;
+            let log = '(no kernel log available)';
+            try { log = fs.readFileSync('kernel.log', 'utf8'); } catch (e) {}
+            let status = 'unknown';
+            try { status = fs.readFileSync('exit_status.txt', 'utf8').trim(); } catch (e) {}
+            const success = status === '0';
+            // Warn: logs can be long; consider uploading as an artifact if too large.
+            const body = success ?
+              `Sovereign Kernel completed successfully (exit code ${status}).\n\n\`\`\`\n${log}\n\`\`\`` :
+              `Sovereign Kernel failed (exit code ${status}).\n\n\`\`\`\n${log}\n\`\`\``;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body
+            });
