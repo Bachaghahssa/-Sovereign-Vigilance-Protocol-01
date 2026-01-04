@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head><title>SVP-01: Sovereign Nucleus</title></head>
+<body style="background: black; color: #00ff00; font-family: monospace; text-align: center; padding-top: 20%;">
+    <h1>💎 SOVEREIGN VIGILANCE PROTOCOL 💎</h1>
+    <p>Auth: The First Engineer | Pivot: Algiers</p>
+    <p>Status: SOVEREIGNTY ACTIVE</p>
+</body>
+</html>
