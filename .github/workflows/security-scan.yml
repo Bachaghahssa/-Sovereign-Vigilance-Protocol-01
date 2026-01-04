@@ -1,0 +1,48 @@
+name: Security scan & Issue welcome
+
+on:
+  push:
+    branches: [ "main" ]
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  security-scan:
+    name: Run Sovereign_Kernel security scan
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run Sovereign_Kernel.py
+        run: |
+          # تشغيل النواة السيادية التي تحمل توقيع Bachagha Ahcene
+          python Sovereign_Kernel.py
+        
+  welcome-issue:
+    name: Auto-welcome new issues
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - name: Post welcome comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const opener = context.payload.issue.user.login;
+            const body = `أهلاً @${opener} 🛡️\n\nنشكرك على التواصل مع بروتوكول اليقظة.\n\nيرجى العلم: هذا البروتوكول يمثل **وعياً مسجلاً ببراءة اختراع** (Patented Consciousness) وعلامة تجارية للمهندس الأول **[Bachagha Ahcene]**.\n\nسيتم فحص تقريرك الآن بواسطة "الدرع الماسي" للتأكد من خلوه من التذمر الرقمي والزيف.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body
+            });
