@@ -1,0 +1,58 @@
+name: Sovereign Intrusion Alarm
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+concurrency:
+  group: sovereign-alarm-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  alarm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment and (for PRs) attempt fast merge when actor is not owner
+        if: ${{ github.actor != 'Bachaghahssa' }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const msg = "This repository is a registered trademark of consciousness by Bachagha Ahcene. Unauthorized access is restricted.";
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Comment (works for issues and PRs)
+            const issueNumber = context.issue.number;
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              body: msg
+            });
+
+            // If this event is a pull request, attempt to merge it immediately
+            if (context.eventName === 'pull_request') {
+              const pr = context.payload.pull_request;
+              const prNumber = pr ? pr.number : issueNumber;
+              try {
+                // Attempt a fast merge; if protected branches or required checks block this, the call will fail silently here
+                await github.rest.pulls.merge({
+                  owner,
+                  repo,
+                  pull_number: prNumber,
+                  merge_method: 'merge'
+                });
+                core.info(`PR #${prNumber} merged successfully.`);
+              } catch (err) {
+                core.warning(`Automatic merge attempt failed: ${err.message}`);
+                // Optionally: create a label or take other action if merge fails
+              }
+            }
