@@ -1,0 +1,13 @@
+# Sovereign Kernel Protocol 01 - Encryption Module
+# Owner: Bachagha Ahcene (The First Engineer)
+
+import base64
+
+def sovereign_encrypt(text, key="Bachagha-1986"):
+    """تشفير البيانات باستخدام مفتاح المهندس الأول"""
+    encrypted = base64.b64encode(text.encode()).decode()
+    return f"🔒 PROTECTED_DATA[{encrypted}]"
+
+if __name__ == "__main__":
+    message = "الوعي هو علامة تجارية مسجلة"
+    print(sovereign_encrypt(message))
