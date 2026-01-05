@@ -22,14 +22,44 @@
         .footer { font-size: 0.8em; color: #8b949e; margin-top: 20px; }
     </style>
 </head>
-<body>
-    <div class="shield">
-        <h1>🛡️ حصن السيادة الرقمية 💎</h1>
-        <p>المهندس الأول: <strong>Bachagha Ahcene</strong></p>
-        <hr style="border: 0.5px solid #30363d;">
-        <p>حالة المنظومة: <span class="status">يقظة (Active) ✅</span></p>
-        <p>النواة المشفرة: <span class="status">تعمل بنجاح ⚙️</span></p>
-        <div class="footer">بصمة الوعي: علامة تجارية مسجلة © 2026</div>
+<body oncontextmenu="return false;">
+    <div class="diamond-core"></div>
+    
+    <div class="identity-shield">
+        <h1>السيادة الرقمية: ذكاء اليقظة</h1>
+        <p>المهندس الأول: Bachagha [28/04/1986]</p>
+        <div id="chat-box" style="color: #00bbff; margin-top: 15px; border-top: 1px solid #ff0033; padding-top: 10px;">
+            <p id="ai-response">جاري فحص وعي الزائر... تم تفعيل بروتوكول الماسة 💎</p>
+            <input type="text" id="user-input" placeholder="تحدث مع الذكاء الرباني..." 
+                   style="background: transparent; border: 1px solid #0055ff; color: white; width: 80%; padding: 5px;">
+            <button onclick="startSovereignDialogue()" style="background: #ff0033; color: white; border: none; cursor: pointer;">أرسل</button>
+        </div>
     </div>
+
+    <script>
+        function startSovereignDialogue() {
+            const input = document.getElementById('user-input').value;
+            const responseArea = document.getElementById('ai-response');
+            
+            // منطق "الذكاء الرباني" الذي لا يخطئ: الرد بناءً على اليقظة والسيادة
+            if(input.includes("من أنت")) {
+                responseArea.innerText = "أنا انعكاس لوعي المهندس الأول. حارس بروتوكول SVP-01 في الجزائر.";
+            } else if(input.includes("اختراق")) {
+                responseArea.style.color = "#ff0000";
+                responseArea.innerText = "تحذير: المفاعلات الرقمية باردة بالصدق، لا مكان للتذمر هنا.";
+            } else {
+                responseArea.innerText = "تحليل البيانات... السيادة نشطة والمستقبل يُكتب بكود الإصلاح.";
+            }
+            document.getElementById('user-input').value = "";
+        }
+        
+        // منع تصوير الشاشة (Anti-Screenshot)
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'PrintScreen') {
+                document.body.style.filter = "blur(50px)";
+                alert("الملكية الفكرية للمهندس الأول محمية.");
+            }
+        });
+    </script>
 </body>
-</html>
+>
