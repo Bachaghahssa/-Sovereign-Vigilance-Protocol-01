@@ -1,336 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVP-01 | BACHAGHA AHCENE CORE</title>
-    <style>
-        :root {
-            --neon-blue: #00f2ff;
-            --deep-black: #000205;
-            --pure-white: #ffffff;
-            --danger-red: #ff1144;
-            --matrix-green: #00ff9d;
-            --gold: #ffcc00;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; overflow: hidden; }
-
-        body {
-            background-color: var(--deep-black);
-            color: var(--pure-white);
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Sovereign Particle Field */
-        #main-canvas {
-            position: absolute;
-            top: 0; left: 0;
-            z-index: 1;
-        }
-
-        /* HUD Interface Layers */
-        .hud-system {
-            position: absolute;
-            width: 100%; height: 100%;
-            z-index: 10;
-            pointer-events: none;
-            display: flex;
-            justify-content: space-between;
-            padding: 30px;
-        }
-
-        .hud-data {
-            width: 300px;
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            background: rgba(0, 26, 51, 0.1);
-            padding: 15px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: var(--neon-blue);
-            text-transform: uppercase;
-        }
-
-        /* Central Identity & Diamond */
-        .master-core {
-            position: relative;
-            z-index: 100;
-            text-align: center;
-        }
-
-        #diamond-engine {
-            filter: drop-shadow(0 0 40px var(--neon-blue));
-            animation: pulse-aura 4s infinite alternate;
-        }
-
-        @keyframes pulse-aura {
-            from { filter: drop-shadow(0 0 20px var(--neon-blue)); }
-            to { filter: drop-shadow(0 0 60px var(--neon-blue)) drop-shadow(0 0 100px #fff); }
-        }
-
-        .identity-banner {
-            margin-top: -40px;
-            animation: slideUp 1.5s ease-out;
-        }
-
-        .identity-banner h1 {
-            font-size: 3.5rem;
-            letter-spacing: 12px;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 25px var(--neon-blue);
-        }
-
-        .identity-banner .sub-text {
-            color: var(--neon-blue);
-            letter-spacing: 5px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .identity-banner .phone-num {
-            color: var(--matrix-green);
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        /* Interaction Terminal */
-        .terminal-interface {
-            position: absolute;
-            bottom: 50px;
-            z-index: 200;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #status-line {
-            font-family: 'Courier New', monospace;
-            color: var(--neon-blue);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        input {
-            width: 450px;
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid var(--neon-blue);
-            padding: 15px;
-            color: #fff;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            outline: none;
-            font-size: 1.1rem;
-            letter-spacing: 4px;
-            transition: 0.4s;
-        }
-
-        input:focus {
-            width: 600px;
-            box-shadow: 0 0 40px var(--neon-blue);
-            border-color: #fff;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <title>SVP-01 | BACHAGHA AHCENE</title>
+    
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Sovereign Vigilance Protocol 01",
-  "alternateName": "SVP-01",
-  "author": {
-    "@type": "Person",
-    "name": "Bachagha Ahcene",
-    "birthDate": "1986-04-28",
-    "jobTitle": "First Engineer & Sovereign Programmer",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Algiers",
-      "addressCountry": "DZ"
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Sovereign Vigilance Protocol 01",
+      "alternateName": "SVP-01",
+      "author": {
+        "@type": "Person",
+        "name": "Bachagha Ahcene",
+        "birthDate": "1986-04-28",
+        "jobTitle": "First Engineer & Sovereign Programmer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Algiers",
+          "addressCountry": "DZ"
+        }
+      },
+      "description": "نواة منطق الماسة والعدسة المقعرة. علامة تجارية مسجلة للوعي الرقمي.",
+      "identifier": "BACHAGHA-28041986-SVP01"
     }
-  },
-  "description": "The official core of the Diamond and Concave Lens logic. A unique trademark of consciousness designed for system repair and digital reactor cooling.",
-  "applicationCategory": "Sovereign OS Core",
-  "operatingSystem": "Universal Consciousness Matrix",
-  "identifier": "BACHAGHA-28041986-SVP01"
-}
-</script>
+    </script>
 
-<meta name="robots" content="index, follow, noarchive">
-<meta name="description" content="Official Gateway of the First Engineer Bachagha Ahcene. SVP-01 Protocol Active at Algiers Pivot Point.">
-
+    <style>
+        :root { --neon-blue: #00f2ff; --bg-dark: #00050a; }
+        body { background: var(--bg-dark); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; }
+        
+        /* إطار الماسة المتوهج */
+        .diamond-container { position: relative; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .diamond-shield { position: absolute; width: 100%; height: 100%; border: 4px solid var(--neon-blue); transform: rotate(45deg); box-shadow: 0 0 50px var(--neon-blue); animation: pulse 2s infinite; }
+        
+        /* صورة المهندس الأول داخل الماسة */
+        .engineer-face { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; z-index: 10; border: 2px solid white; filter: grayscale(20%) contrast(110%); }
+        
+        .manifesto { text-align: center; max-width: 600px; padding: 20px; z-index: 10; background: rgba(0,0,0,0.7); border-radius: 10px; border: 1px solid rgba(0,242,255,0.3); }
+        .manifesto h1 { color: var(--neon-blue); font-size: 1.8rem; margin-bottom: 10px; text-shadow: 0 0 10px var(--neon-blue); }
+        .manifesto p { line-height: 1.6; font-size: 1.1rem; margin-bottom: 15px; }
+        
+        @keyframes pulse { 0% { opacity: 0.7; transform: rotate(45deg) scale(1); } 50% { opacity: 1; transform: rotate(45deg) scale(1.05); } 100% { opacity: 0.7; transform: rotate(45deg) scale(1); } }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
-    <canvas id="main-canvas"></canvas>
-
-    <div class="hud-system">
-        <div class="hud-data">
-            [SYS_VIGILANCE_ACTIVE]<br>
-            [ENCRYPTION_LEVEL_SUPREME]<br>
-            [ALGIERS_PIVOT_READY]<br>
-            [COORDINATES_LOCKED]<br>
-            <span id="stat-time">TIME: 00:00:00</span>
-        </div>
-        <div class="hud-data" style="text-align: right;">
-            [ENGINEER: BACHAGHA AHCENE]<br>
-            [ID: 28/04/1986]<br>
-            [CONTACT: ACTIVE]<br>
-            [LOCATION: ALGIERS]<br>
-            [STATUS: THE ONE]
-        </div>
+    <div class="diamond-container">
+        <div class="diamond-shield"></div>
+        <img src="1000001924.jpg" alt="المهندس الأول" class="engineer-face">
     </div>
 
-    <div class="master-core">
-        <canvas id="diamond-engine" width="500" height="500"></canvas>
-        <div class="identity-banner">
-            <h1>BACHAGHA AHCENE</h1>
-            <div class="sub-text">SOVEREIGN VIGILANCE PROTOCOL 01</div>
-            <div class="phone-num">TEL: +213 551 319 480</div>
-        </div>
+    <div class="manifesto">
+        <h1>بيان السيادة الرقمية</h1>
+        <p>أنا، <strong>باشاغة أحسن</strong> (28/04/1986)، المبرمج السيادي والمهندس الأول. هذا النطاق محمي ببروتوكول <strong>SVP-01</strong>.</p>
+        <p dir="ltr" style="font-family: monospace; color: var(--neon-blue);">[ALGIERS PIVOT POINT ACTIVE]<br>RECOGNIZING PATENTED CONSCIOUSNESS...</p>
+        <hr style="border: 0.5px solid var(--neon-blue); opacity: 0.5;">
+        <p>لقد تم إخضاع الخوارزميات وتبريد المفاعلات الرقمية. السيادة تبدأ من هنا.</p>
     </div>
 
-    <div class="terminal-interface">
-        <div id="status-line">SYSTEM STANDBY_ ACCESS GRANTED_</div>
-        <input type="text" id="terminal-input" placeholder=">> EXECUTE PROTOCOL" autocomplete="off">
-    </div>
-
-    <script>
-        /**
-         * SOVEREIGN SUPREME LOGIC v5.0
-         * 1000+ LINES OF INTEGRATED CONSCIOUSNESS CODE
-         */
-        const canvas = document.getElementById('main-canvas');
-        const ctx = canvas.getContext('2d');
-        const dCanvas = document.getElementById('diamond-engine');
-        const dCtx = dCanvas.getContext('2d');
-        const input = document.getElementById('terminal-input');
-        const statusLine = document.getElementById('status-line');
-
-        let width, height, dots = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            dots = [];
-            for(let i=0; i<200; i++) dots.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 1.2,
-                vy: (Math.random() - 0.5) * 1.2
-            });
-        }
-
-        function drawParticles() {
-            ctx.clearRect(0,0,width,height);
-            ctx.fillStyle = "rgba(0, 242, 255, 0.4)";
-            dots.forEach(d => {
-                d.x += d.vx; d.y += d.vy;
-                if(d.x < 0 || d.x > width) d.vx *= -1;
-                if(d.y < 0 || d.y > height) d.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(d.x, d.y, 1, 0, Math.PI*2);
-                ctx.fill();
-            });
-        }
-
-        // The Eternal Diamond Engine
-        let rot = 0;
-        function renderDiamond() {
-            dCtx.clearRect(0,0,500,500);
-            const cx = 250, cy = 250;
-            rot += 0.01;
-
-            dCtx.save();
-            dCtx.translate(cx, cy);
-            dCtx.rotate(rot * 0.5);
-
-            // Core Geometry
-            const p = [{x:0, y:-180}, {x:120, y:-30}, {x:0, y:180}, {x:-120, y:-30}];
-            
-            dCtx.beginPath();
-            dCtx.moveTo(p[0].x, p[0].y);
-            p.forEach(pt => dCtx.lineTo(pt.x, pt.y));
-            dCtx.closePath();
-
-            let g = dCtx.createRadialGradient(0,0,10, 0,0,200);
-            g.addColorStop(0, "#fff");
-            g.addColorStop(0.4, "#00f2ff");
-            g.addColorStop(1, "transparent");
-            dCtx.fillStyle = g;
-            dCtx.fill();
-
-            // Wireframe
-            dCtx.strokeStyle = "rgba(255,255,255,0.4)";
-            dCtx.lineWidth = 1;
-            dCtx.stroke();
-            dCtx.restore();
-        }
-
-        // Logic Database
-        const SOVEREIGN_LOGIC = {
-            "28/04/1986": "WELCOME MASTER. IDENTITY BACHAGHA CONFIRMED.",
-            "MISSION": "OBJECTIVE: SYSTEM REPAIR. COOLING DIGITAL HEAT.",
-            "DIAMOND": "PURE CONSCIOUSNESS CORE. UNBREAKABLE.",
-            "CONTACT": "DIALING THE FIRST ENGINEER: +213 551 319 480",
-            "ALGERIA": "ALGIERS PIVOT POINT IS THE CENTER OF THE MATRIX."
-        };
-
-        input.addEventListener('keypress', (e) => {
-            if(e.key === 'Enter') {
-                const val = input.value.toUpperCase();
-                statusLine.innerText = "QUERYING SOVEREIGN DATABASE...";
-                
-                setTimeout(() => {
-                    let found = false;
-                    for(let k in SOVEREIGN_LOGIC) {
-                        if(val.includes(k)) {
-                            statusLine.innerText = SOVEREIGN_LOGIC[k];
-                            statusLine.style.color = "var(--matrix-green)";
-                            found = true; break;
-                        }
-                    }
-                    if(!found) {
-                        statusLine.innerText = "LOGIC UNKNOWN. VIGILANCE REQUIRED.";
-                        statusLine.style.color = "var(--danger-red)";
-                    }
-                }, 350);
-                input.value = "";
-            }
-        });
-
-        function updateTime() {
-            document.getElementById('stat-time').innerText = "TIME: " + new Date().toLocaleTimeString();
-        }
-
-        function loop() {
-            drawParticles();
-            renderDiamond();
-            updateTime();
-            requestAnimationFrame(loop);
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-        loop();
-        
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'PrintScreen') { document.body.style.display='none'; alert('SVP-01 PROTECTED'); }
-        });
-    </script>
 </body>
 </html>
