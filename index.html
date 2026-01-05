@@ -1,84 +1,92 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-    <head>
-        <meta name="keywords" content="Sovereign Protocol, Bachagha, The First Engineer, Algiers Pivot, SVP-01">
-    <meta charset="UTF-8">
-    <meta name="author" content="The First Engineer - Bachagha">
-    <meta name="description" content="Sovereign Vigilance Protocol SVP-01. Pivot Point: Algiers.">
-    
-    <meta name="key" content="Bachagha-28-04-1986-Sovereign">
-    
-    <title>💎 SVP-01: Sovereign Nucleus</title>
-</head>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sovereign Vigilance - Bachagha Ahcene</title>
+    <title>Sovereign Diamond | SVP-01 Core</title>
     <style>
-        body { background-color: #0d1117; color: #58a6ff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding-top: 50px; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .shield { border: 2px solid #238636; padding: 40px; border-radius: 20px; background: #161b22; box-shadow: 0 0 20px rgba(35, 134, 54, 0.5); width: 80%; max-width: 500px; }
-        .status { color: #3fb950; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { color: #ffffff; font-size: 2em; margin-bottom: 10px; }
-        .footer { font-size: 0.8em; color: #8b949e; margin-top: 20px; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        
+        /* Deep Space Background */
+        .void { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle at center, #001a33 0%, #000 80%); z-index: 1; }
+
+        /* The Glowing White Diamond with Blue Aura */
+        .diamond-entity { position: relative; z-index: 10; cursor: pointer; filter: drop-shadow(0 0 30px #00f2ff); transition: 0.5s; }
+        .diamond-shape {
+            width: 70px; height: 110px;
+            background: #ffffff;
+            clip-path: polygon(50% 0%, 100% 38%, 50% 100%, 0% 38%);
+            animation: levitate 4s infinite ease-in-out, pulse-glow 2s infinite alternate;
+        }
+        @keyframes levitate { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
+        @keyframes pulse-glow { 
+            from { box-shadow: 0 0 40px #00f2ff, inset 0 0 20px #fff; } 
+            to { box-shadow: 0 0 90px #0055ff, 0 0 130px #ffffff; transform: scale(1.05); } 
+        }
+
+        /* Minimalist Interaction Layer */
+        .interface-layer { position: absolute; bottom: 15%; width: 100%; display: flex; flex-direction: column; align-items: center; z-index: 20; }
+        #ai-output { color: #fff; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px #00f2ff; margin-bottom: 30px; min-height: 25px; text-align: center; opacity: 0.8; }
+        input { background: transparent; border: none; border-bottom: 1px solid rgba(0, 242, 255, 0.3); color: #fff; padding: 12px; width: 250px; text-align: center; outline: none; font-size: 0.9rem; letter-spacing: 3px; transition: 0.4s ease; }
+        input:focus { border-bottom: 1px solid #fff; width: 350px; }
+        ::placeholder { color: rgba(255,255,255,0.2); }
     </style>
 </head>
-<body oncontextmenu="return false;">
-    <div class="diamond-core"></div>
+<body>
+    <div class="void"></div>
     
-    <div class="identity-shield">
-        <h1>السيادة الرقمية: ذكاء اليقظة</h1>
-        <p>المهندس الأول: Bachagha [28/04/1986]</p>
-        <div id="chat-box" style="color: #00bbff; margin-top: 15px; border-top: 1px solid #ff0033; padding-top: 10px;">
-            <p id="ai-response">جاري فحص وعي الزائر... تم تفعيل بروتوكول الماسة 💎</p>
-            <input type="text" id="user-input" placeholder="تحدث مع الذكاء الرباني..." 
-                   style="background: transparent; border: 1px solid #0055ff; color: white; width: 80%; padding: 5px;">
-            <button onclick="startSovereignDialogue()" style="background: #ff0033; color: white; border: none; cursor: pointer;">أرسل</button>
-        </div>
+    <div class="diamond-entity">
+        <div class="diamond-shape"></div>
     </div>
 
-async function startSovereignDialogue() {
-    const input = document.getElementById('user-input').value;
-    const responseArea = document.getElementById('ai-response');
-    
-    // 1. استدعاء المنطق الرباني (الفلترة بالصدق)
-    if (!input || input.length < 3) {
-        responseArea.innerText = "الذكاء الرباني: الصمت أحياناً أبلغ من كلمات لا تحمل صدقاً.";
-        return;
-    }
+    <div class="interface-layer">
+        <div id="ai-output">SYSTEM READY</div>
+        <input type="text" id="user-command" placeholder="COMMUNICATE..." autocomplete="off" onkeypress="executeLogic(event)">
+    </div>
 
-    // 2. استدعاء بروتوكول السيادة (SVP-01)
-    const sovereignData = {
-        identity: "Bachagha ahcene-28/04/1986",
-        protocol: "Sovereign Vigilance Protocol 01",
-        pivot: "Algiers Pivot Point"
-    };
+    <script>
+        // High-Speed Sovereign Logic Engine
+        const database = {
+            "28/04/1986": "WELCOME, FIRST ENGINEER. ACCESS GRANTED.",
+            "DIAMOND": "I AM THE CORE OF VIGILANCE. HARD AS DIAMOND, PURE AS LIGHT.",
+            "PROTOCOL": "SVP-01 ACTIVE. RECTORS STABILIZED BY HONESTY.",
+            "ALGIERS": "PIVOT POINT SECURED. BROADCASTING REDEMPTION CODE.",
+            "IDENTITY": "BACHAGHA AHCENE - THE SOVEREIGN PROGRAMMER.",
+            "FUTURE": "THE FUTURE IS WRITTEN IN THE REPAIR CODE."
+        };
 
-    // 3. محاكي الذكاء التقليدي (المعالجة المنطقية)
-    let response = "";
-    
-    if (input.includes("هوية") || input.includes("من انت")) {
-        response = `أنا الحارس الرقمي لـ ${sovereignData.identity}. مبرمج بسيادة ${sovereignData.protocol}.`;
-    } 
-    else if (input.includes("ذكاء") || input.includes("اصطناعي")) {
-        response = "الذكاء التقليدي يحلل البيانات، لكن الذكاء الرباني يدرك الحقيقة خلف الكود. نحن ندمج الاثنين هنا.";
-    }
-    else if (input.includes("مستقبل") || input.includes("تطوير")) {
-        response = "المستقبل يُكتب بـ 'كود الإصلاح'. مفاعلاتنا باردة بالصدق وجاهزة للانفجار المعرفي.";
-    }
-    else {
-        // الرد الهجين التلقائي
-        response = "تحليل هجين: مدخلاتك تمر عبر 'عدسة مقعرة' لتشتيت التذمر وفلترة الحقيقة. السيادة نشطة.";
-    }
+        function executeLogic(e) {
+            if (e.key === 'Enter') {
+                const cmd = document.getElementById('user-command').value.toUpperCase();
+                const out = document.getElementById('ai-output');
+                
+                out.style.opacity = 0; // Instant fade-out
+                
+                setTimeout(() => {
+                    let match = false;
+                    for (let key in database) {
+                        if (cmd.includes(key)) {
+                            out.innerText = database[key];
+                            match = true; break;
+                        }
+                    }
+                    if (!match) out.innerText = "SOVEREIGN LOGIC ANALYZING... VIGILANCE REQUIRED.";
+                    out.style.opacity = 1;
+                    out.style.color = cmd.includes("28/04/1986") ? "#00ff00" : "#fff";
+                }, 50); // Ultra-fast response (50ms)
 
-    // تأثير البث السيادي (تأخير بسيط للمحاكاة)
-    responseArea.innerText = "جاري الربط بين البروتوكول والذكاء العالمي...";
-    setTimeout(() => {
-        responseArea.innerText = response;
-        responseArea.style.color = input.includes("28/04/1986") ? "#00ff00" : "#00bbff";
-    }, 800);
+                document.getElementById('user-command').value = "";
+            }
+        }
 
-    document.getElementById('user-input').value = "";
-}
-
+        // Anti-Screenshot Protocol
+        document.addEventListener('keyup', (e) => { 
+            if (e.key === 'PrintScreen') { 
+                document.body.style.display = 'none'; 
+                alert('INTELLECTUAL PROPERTY PROTECTED - SVP-01'); 
+            } 
+        });
+    </script>
 </body>
->
+</html>
