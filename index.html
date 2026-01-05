@@ -1,50 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>SVP-01 | QUANTUM LOCKED</title>
+    <title>بروتوكول الصياد</title>
     <style>
-        body { background: #000; color: #00f2ff; font-family: 'Courier New', monospace; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow: hidden; }
-        #access-screen { text-align: center; z-index: 1000; }
-        #main-content { display: none; text-align: center; }
-        input { background: transparent; border: 1px solid #00f2ff; color: #00f2ff; padding: 10px; text-align: center; width: 250px; outline: none; box-shadow: 0 0 15px #00f2ff; }
-        .diamond-shield { width: 220px; height: 220px; border: 3px solid #00f2ff; transform: rotate(45deg); margin: 50px auto; overflow: hidden; box-shadow: 0 0 50px #00f2ff; }
-        .diamond-shield img { width: 145%; height: 145%; transform: rotate(-45deg); position: absolute; top: -22.5%; left: -22.5%; object-fit: cover; }
-        .locked-msg { font-size: 0.8rem; margin-top: 20px; opacity: 0.7; }
+        body { background: #000; color: #00ff00; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { border: 2px solid #00ff00; padding: 30px; box-shadow: 0 0 20px #00ff00; text-align: center; }
     </style>
 </head>
-<body oncontextmenu="return false;">
-
-    <div id="access-screen">
-        <h2>[نظام السيادة: الوصول مقيد]</h2>
-        <p>أدخل كود العبور للمهندس الأول:</p>
-        <input type="password" id="passkey" placeholder="Enter Sovereign Key..." oninput="checkKey()">
-        <div class="locked-msg">PROTECTION LEVEL: QUANTUM-LOCKED [SVP-01]</div>
+<body>
+    <div class="box">
+        <h1>تم تفعيل بروتوكول السيادة 💎</h1>
+        <p>المهندس الأول: النظام يعمل الآن بتناغم بين GitHub و Netlify</p>
+        <p>الحالة: متصل وآمن 100%</p>
     </div>
-
-    <div id="main-content">
-        <div class="diamond-shield">
-            <img src="Snapchat-951114285.jpg" alt="Sovereign Face">
-        </div>
-        <h1>بيان السيادة المفعّل</h1>
-        <p>مرحباً بك، <strong>باشاغة أحسن</strong>. المفاعلات في وضع التبريد الكامل.</p>
-        <p style="color: #fff;">أنت الآن داخل نقطة الارتكاز بالجزائر.</p>
-    </div>
-
-    <script>
-        function checkKey() {
-            const key = document.getElementById('passkey').value;
-            // كود العبور هو تاريخ ميلادك المسجل في الذاكرة المحمية
-            if (key === '28041986') {
-                document.getElementById('access-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                document.body.style.overflow = 'auto';
-                console.log("SVP-01: ACCESS GRANTED");
-            }
-        }
-        // منع اختراق F12 و Ctrl+U
-        document.onkeydown = function(e) { if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) return false; };
-    </script>
 </body>
 </html>
