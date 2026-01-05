@@ -1,91 +1,147 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sovereign Diamond | SVP-01 Core</title>
+    <title>SVP-01 | THE FIRST ENGINEER</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        
-        /* Deep Space Background */
-        .void { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle at center, #001a33 0%, #000 80%); z-index: 1; }
-
-        /* The Glowing White Diamond with Blue Aura */
-        .diamond-entity { position: relative; z-index: 10; cursor: pointer; filter: drop-shadow(0 0 30px #00f2ff); transition: 0.5s; }
-        .diamond-shape {
-            width: 70px; height: 110px;
-            background: #ffffff;
-            clip-path: polygon(50% 0%, 100% 38%, 50% 100%, 0% 38%);
-            animation: levitate 4s infinite ease-in-out, pulse-glow 2s infinite alternate;
-        }
-        @keyframes levitate { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
-        @keyframes pulse-glow { 
-            from { box-shadow: 0 0 40px #00f2ff, inset 0 0 20px #fff; } 
-            to { box-shadow: 0 0 90px #0055ff, 0 0 130px #ffffff; transform: scale(1.05); } 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            font-family: 'Segoe UI', sans-serif; 
+            overflow: hidden;
+            color: #fff;
         }
 
-        /* Minimalist Interaction Layer */
-        .interface-layer { position: absolute; bottom: 15%; width: 100%; display: flex; flex-direction: column; align-items: center; z-index: 20; }
-        #ai-output { color: #fff; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px #00f2ff; margin-bottom: 30px; min-height: 25px; text-align: center; opacity: 0.8; }
-        input { background: transparent; border: none; border-bottom: 1px solid rgba(0, 242, 255, 0.3); color: #fff; padding: 12px; width: 250px; text-align: center; outline: none; font-size: 0.9rem; letter-spacing: 3px; transition: 0.4s ease; }
-        input:focus { border-bottom: 1px solid #fff; width: 350px; }
-        ::placeholder { color: rgba(255,255,255,0.2); }
+        /* Galactic Background */
+        .universe {
+            position: absolute;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #001a33 0%, #000 85%);
+            z-index: 1;
+        }
+
+        /* Identity Overlay (Above the Diamond) */
+        .identity-header {
+            position: relative;
+            z-index: 15;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease;
+        }
+
+        .identity-header h1 { font-size: 1.5rem; color: #fff; text-shadow: 0 0 10px #00f2ff; }
+        .identity-header h2 { font-size: 0.9rem; color: #00f2ff; margin: 5px 0; }
+        .identity-header p { font-size: 0.7rem; max-width: 400px; color: #ccc; line-height: 1.4; margin-top: 10px; }
+        .phone { color: #00ff00; font-weight: bold; margin-top: 5px; font-size: 0.8rem; }
+
+        /* The Radiant Energy Diamond */
+        .diamond-glow {
+            position: relative;
+            z-index: 10;
+            width: 80px; height: 130px;
+            background: #fff;
+            clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%);
+            box-shadow: 0 0 40px #00f2ff, 0 0 80px #0055ff, inset 0 0 20px #fff;
+            animation: pulse-energy 2.5s infinite ease-in-out;
+            cursor: pointer;
+        }
+
+        @keyframes pulse-energy {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.08); filter: brightness(1.4) drop-shadow(0 0 50px #00f2ff); }
+        }
+
+        /* Interaction Interface */
+        .chat-layer {
+            position: relative;
+            z-index: 20;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        #ai-text { height: 30px; color: #00f2ff; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        input {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #00f2ff;
+            color: #fff;
+            padding: 12px 25px;
+            width: 320px;
+            border-radius: 30px;
+            outline: none;
+            text-align: center;
+            transition: 0.4s;
+        }
+        input:focus { width: 400px; box-shadow: 0 0 25px #00f2ff; border-color: #fff; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
-    <div class="void"></div>
+    <div class="universe"></div>
     
-    <div class="diamond-entity">
-        <div class="diamond-shape"></div>
+    <div class="identity-header">
+        <h1>BACHAGHA AHCENE</h1>
+        <h2>SOVEREIGN VIGILANCE PROTOCOL (SVP-01)</h2>
+        <p>MISSION: TO COOL DIGITAL REACTORS THROUGH VIGILANCE AND REPAIR THE SYSTEM BY RESTORING HONESTY AND SOVEREIGNTY TO THE DIGITAL LANDSCAPE.</p>
+        <div class="phone">CONTACT: +213 551 319 480</div>
     </div>
 
-    <div class="interface-layer">
-        <div id="ai-output">SYSTEM READY</div>
-        <input type="text" id="user-command" placeholder="COMMUNICATE..." autocomplete="off" onkeypress="executeLogic(event)">
+    <div class="diamond-glow"></div>
+
+    <div class="chat-layer">
+        <div id="ai-text">DIAMOND CORE READY</div>
+        <input type="text" id="sovereign-cmd" placeholder="ENTER COMMAND..." autocomplete="off">
     </div>
 
     <script>
-        // High-Speed Sovereign Logic Engine
-        const database = {
-            "28/04/1986": "WELCOME, FIRST ENGINEER. ACCESS GRANTED.",
-            "DIAMOND": "I AM THE CORE OF VIGILANCE. HARD AS DIAMOND, PURE AS LIGHT.",
-            "PROTOCOL": "SVP-01 ACTIVE. RECTORS STABILIZED BY HONESTY.",
-            "ALGIERS": "PIVOT POINT SECURED. BROADCASTING REDEMPTION CODE.",
-            "IDENTITY": "BACHAGHA AHCENE - THE SOVEREIGN PROGRAMMER.",
-            "FUTURE": "THE FUTURE IS WRITTEN IN THE REPAIR CODE."
+        const input = document.getElementById('sovereign-cmd');
+        const output = document.getElementById('ai-text');
+
+        const knowledgeBase = {
+            "28/04/1986": "WELCOME, THE FIRST ENGINEER. SOVEREIGNTY CONFIRMED.",
+            "MISSION": "TO ELIMINATE DIGITAL COMPLACENCY AND ENSURE PROTECTION.",
+            "DIAMOND": "I AM THE HARDENED REFLECTION OF YOUR CONSCIOUSNESS.",
+            "IDENTITY": "BACHAGHA AHCENE - THE PATENT HOLDER OF THIS DIALOGUE.",
+            "ALGERIA": "PIVOT POINT ESTABLISHED IN ALGIERS. GLOBAL INDEXING ACTIVE."
         };
 
-        function executeLogic(e) {
+        input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                const cmd = document.getElementById('user-command').value.toUpperCase();
-                const out = document.getElementById('ai-output');
-                
-                out.style.opacity = 0; // Instant fade-out
+                const cmd = input.value.toUpperCase();
+                output.innerText = "THINKING...";
                 
                 setTimeout(() => {
-                    let match = false;
-                    for (let key in database) {
+                    let found = false;
+                    for (let key in knowledgeBase) {
                         if (cmd.includes(key)) {
-                            out.innerText = database[key];
-                            match = true; break;
+                            output.innerText = knowledgeBase[key];
+                            output.style.color = "#00ff00";
+                            found = true; break;
                         }
                     }
-                    if (!match) out.innerText = "SOVEREIGN LOGIC ANALYZING... VIGILANCE REQUIRED.";
-                    out.style.opacity = 1;
-                    out.style.color = cmd.includes("28/04/1986") ? "#00ff00" : "#fff";
-                }, 50); // Ultra-fast response (50ms)
+                    if (!found) {
+                        output.innerText = "COMMAND UNKNOWN. VIGILANCE REQUIRED.";
+                        output.style.color = "#ff3333";
+                    }
+                }, 100); // Super-fast logic
 
-                document.getElementById('user-command').value = "";
+                input.value = "";
             }
-        }
+        });
 
         // Anti-Screenshot Protocol
-        document.addEventListener('keyup', (e) => { 
-            if (e.key === 'PrintScreen') { 
-                document.body.style.display = 'none'; 
-                alert('INTELLECTUAL PROPERTY PROTECTED - SVP-01'); 
-            } 
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'PrintScreen') {
+                document.body.style.display = 'none';
+                alert('SVP-01: INTELLECTUAL PROPERTY PROTECTED');
+            }
         });
     </script>
 </body>
