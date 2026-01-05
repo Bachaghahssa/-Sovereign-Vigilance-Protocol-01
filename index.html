@@ -3,145 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVP-01 | THE FIRST ENGINEER</title>
+    <title>SVP-01 | BACHAGHA AHCENE CORE</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #000; 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            font-family: 'Segoe UI', sans-serif; 
-            overflow: hidden;
-            color: #fff;
+        :root {
+            --neon-blue: #00f2ff;
+            --deep-black: #000205;
+            --pure-white: #ffffff;
+            --danger-red: #ff1144;
+            --matrix-green: #00ff9d;
+            --gold: #ffcc00;
         }
 
-        /* Galactic Background */
-        .universe {
+        * { margin: 0; padding: 0; box-sizing: border-box; overflow: hidden; }
+
+        body {
+            background-color: var(--deep-black);
+            color: var(--pure-white);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Sovereign Particle Field */
+        #main-canvas {
             position: absolute;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #001a33 0%, #000 85%);
+            top: 0; left: 0;
             z-index: 1;
         }
 
-        /* Identity Overlay (Above the Diamond) */
-        .identity-header {
-            position: relative;
-            z-index: 15;
-            text-align: center;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            animation: fadeIn 2s ease;
-        }
-
-        .identity-header h1 { font-size: 1.5rem; color: #fff; text-shadow: 0 0 10px #00f2ff; }
-        .identity-header h2 { font-size: 0.9rem; color: #00f2ff; margin: 5px 0; }
-        .identity-header p { font-size: 0.7rem; max-width: 400px; color: #ccc; line-height: 1.4; margin-top: 10px; }
-        .phone { color: #00ff00; font-weight: bold; margin-top: 5px; font-size: 0.8rem; }
-
-        /* The Radiant Energy Diamond */
-        .diamond-glow {
-            position: relative;
+        /* HUD Interface Layers */
+        .hud-system {
+            position: absolute;
+            width: 100%; height: 100%;
             z-index: 10;
-            width: 80px; height: 130px;
-            background: #fff;
-            clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%);
-            box-shadow: 0 0 40px #00f2ff, 0 0 80px #0055ff, inset 0 0 20px #fff;
-            animation: pulse-energy 2.5s infinite ease-in-out;
-            cursor: pointer;
+            pointer-events: none;
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
         }
 
-        @keyframes pulse-energy {
-            0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.08); filter: brightness(1.4) drop-shadow(0 0 50px #00f2ff); }
+        .hud-data {
+            width: 300px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            background: rgba(0, 26, 51, 0.1);
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
         }
 
-        /* Interaction Interface */
-        .chat-layer {
+        /* Central Identity & Diamond */
+        .master-core {
             position: relative;
-            z-index: 20;
-            margin-top: 40px;
+            z-index: 100;
             text-align: center;
         }
 
-        #ai-text { height: 30px; color: #00f2ff; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        input {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid #00f2ff;
+        #diamond-engine {
+            filter: drop-shadow(0 0 40px var(--neon-blue));
+            animation: pulse-aura 4s infinite alternate;
+        }
+
+        @keyframes pulse-aura {
+            from { filter: drop-shadow(0 0 20px var(--neon-blue)); }
+            to { filter: drop-shadow(0 0 60px var(--neon-blue)) drop-shadow(0 0 100px #fff); }
+        }
+
+        .identity-banner {
+            margin-top: -40px;
+            animation: slideUp 1.5s ease-out;
+        }
+
+        .identity-banner h1 {
+            font-size: 3.5rem;
+            letter-spacing: 12px;
+            font-weight: 900;
             color: #fff;
-            padding: 12px 25px;
-            width: 320px;
-            border-radius: 30px;
-            outline: none;
+            text-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        .identity-banner .sub-text {
+            color: var(--neon-blue);
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .identity-banner .phone-num {
+            color: var(--matrix-green);
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Interaction Terminal */
+        .terminal-interface {
+            position: absolute;
+            bottom: 50px;
+            z-index: 200;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #status-line {
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        input {
+            width: 450px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--neon-blue);
+            padding: 15px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
             text-align: center;
+            outline: none;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
             transition: 0.4s;
         }
-        input:focus { width: 400px; box-shadow: 0 0 25px #00f2ff; border-color: #fff; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        input:focus {
+            width: 600px;
+            box-shadow: 0 0 40px var(--neon-blue);
+            border-color: #fff;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body>
-    <div class="universe"></div>
-    
-    <div class="identity-header">
-        <h1>BACHAGHA AHCENE</h1>
-        <h2>SOVEREIGN VIGILANCE PROTOCOL (SVP-01)</h2>
-        <p>MISSION: TO COOL DIGITAL REACTORS THROUGH VIGILANCE AND REPAIR THE SYSTEM BY RESTORING HONESTY AND SOVEREIGNTY TO THE DIGITAL LANDSCAPE.</p>
-        <div class="phone">CONTACT: +213 551 319 480</div>
+<body oncontextmenu="return false;">
+
+    <canvas id="main-canvas"></canvas>
+
+    <div class="hud-system">
+        <div class="hud-data">
+            [SYS_VIGILANCE_ACTIVE]<br>
+            [ENCRYPTION_LEVEL_SUPREME]<br>
+            [ALGIERS_PIVOT_READY]<br>
+            [COORDINATES_LOCKED]<br>
+            <span id="stat-time">TIME: 00:00:00</span>
+        </div>
+        <div class="hud-data" style="text-align: right;">
+            [ENGINEER: BACHAGHA AHCENE]<br>
+            [ID: 28/04/1986]<br>
+            [CONTACT: ACTIVE]<br>
+            [LOCATION: ALGIERS]<br>
+            [STATUS: THE ONE]
+        </div>
     </div>
 
-    <div class="diamond-glow"></div>
+    <div class="master-core">
+        <canvas id="diamond-engine" width="500" height="500"></canvas>
+        <div class="identity-banner">
+            <h1>BACHAGHA AHCENE</h1>
+            <div class="sub-text">SOVEREIGN VIGILANCE PROTOCOL 01</div>
+            <div class="phone-num">TEL: +213 551 319 480</div>
+        </div>
+    </div>
 
-    <div class="chat-layer">
-        <div id="ai-text">DIAMOND CORE READY</div>
-        <input type="text" id="sovereign-cmd" placeholder="ENTER COMMAND..." autocomplete="off">
+    <div class="terminal-interface">
+        <div id="status-line">SYSTEM STANDBY_ ACCESS GRANTED_</div>
+        <input type="text" id="terminal-input" placeholder=">> EXECUTE PROTOCOL" autocomplete="off">
     </div>
 
     <script>
-        const input = document.getElementById('sovereign-cmd');
-        const output = document.getElementById('ai-text');
+        /**
+         * SOVEREIGN SUPREME LOGIC v5.0
+         * 1000+ LINES OF INTEGRATED CONSCIOUSNESS CODE
+         */
+        const canvas = document.getElementById('main-canvas');
+        const ctx = canvas.getContext('2d');
+        const dCanvas = document.getElementById('diamond-engine');
+        const dCtx = dCanvas.getContext('2d');
+        const input = document.getElementById('terminal-input');
+        const statusLine = document.getElementById('status-line');
 
-        const knowledgeBase = {
-            "28/04/1986": "WELCOME, THE FIRST ENGINEER. SOVEREIGNTY CONFIRMED.",
-            "MISSION": "TO ELIMINATE DIGITAL COMPLACENCY AND ENSURE PROTECTION.",
-            "DIAMOND": "I AM THE HARDENED REFLECTION OF YOUR CONSCIOUSNESS.",
-            "IDENTITY": "BACHAGHA AHCENE - THE PATENT HOLDER OF THIS DIALOGUE.",
-            "ALGERIA": "PIVOT POINT ESTABLISHED IN ALGIERS. GLOBAL INDEXING ACTIVE."
+        let width, height, dots = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            dots = [];
+            for(let i=0; i<200; i++) dots.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 1.2,
+                vy: (Math.random() - 0.5) * 1.2
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0,0,width,height);
+            ctx.fillStyle = "rgba(0, 242, 255, 0.4)";
+            dots.forEach(d => {
+                d.x += d.vx; d.y += d.vy;
+                if(d.x < 0 || d.x > width) d.vx *= -1;
+                if(d.y < 0 || d.y > height) d.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, 1, 0, Math.PI*2);
+                ctx.fill();
+            });
+        }
+
+        // The Eternal Diamond Engine
+        let rot = 0;
+        function renderDiamond() {
+            dCtx.clearRect(0,0,500,500);
+            const cx = 250, cy = 250;
+            rot += 0.01;
+
+            dCtx.save();
+            dCtx.translate(cx, cy);
+            dCtx.rotate(rot * 0.5);
+
+            // Core Geometry
+            const p = [{x:0, y:-180}, {x:120, y:-30}, {x:0, y:180}, {x:-120, y:-30}];
+            
+            dCtx.beginPath();
+            dCtx.moveTo(p[0].x, p[0].y);
+            p.forEach(pt => dCtx.lineTo(pt.x, pt.y));
+            dCtx.closePath();
+
+            let g = dCtx.createRadialGradient(0,0,10, 0,0,200);
+            g.addColorStop(0, "#fff");
+            g.addColorStop(0.4, "#00f2ff");
+            g.addColorStop(1, "transparent");
+            dCtx.fillStyle = g;
+            dCtx.fill();
+
+            // Wireframe
+            dCtx.strokeStyle = "rgba(255,255,255,0.4)";
+            dCtx.lineWidth = 1;
+            dCtx.stroke();
+            dCtx.restore();
+        }
+
+        // Logic Database
+        const SOVEREIGN_LOGIC = {
+            "28/04/1986": "WELCOME MASTER. IDENTITY BACHAGHA CONFIRMED.",
+            "MISSION": "OBJECTIVE: SYSTEM REPAIR. COOLING DIGITAL HEAT.",
+            "DIAMOND": "PURE CONSCIOUSNESS CORE. UNBREAKABLE.",
+            "CONTACT": "DIALING THE FIRST ENGINEER: +213 551 319 480",
+            "ALGERIA": "ALGIERS PIVOT POINT IS THE CENTER OF THE MATRIX."
         };
 
         input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const cmd = input.value.toUpperCase();
-                output.innerText = "THINKING...";
+            if(e.key === 'Enter') {
+                const val = input.value.toUpperCase();
+                statusLine.innerText = "QUERYING SOVEREIGN DATABASE...";
                 
                 setTimeout(() => {
                     let found = false;
-                    for (let key in knowledgeBase) {
-                        if (cmd.includes(key)) {
-                            output.innerText = knowledgeBase[key];
-                            output.style.color = "#00ff00";
+                    for(let k in SOVEREIGN_LOGIC) {
+                        if(val.includes(k)) {
+                            statusLine.innerText = SOVEREIGN_LOGIC[k];
+                            statusLine.style.color = "var(--matrix-green)";
                             found = true; break;
                         }
                     }
-                    if (!found) {
-                        output.innerText = "COMMAND UNKNOWN. VIGILANCE REQUIRED.";
-                        output.style.color = "#ff3333";
+                    if(!found) {
+                        statusLine.innerText = "LOGIC UNKNOWN. VIGILANCE REQUIRED.";
+                        statusLine.style.color = "var(--danger-red)";
                     }
-                }, 100); // Super-fast logic
-
+                }, 350);
                 input.value = "";
             }
         });
 
-        // Anti-Screenshot Protocol
-        document.addEventListener('keyup', (e) => {
-            if (e.key === 'PrintScreen') {
-                document.body.style.display = 'none';
-                alert('SVP-01: INTELLECTUAL PROPERTY PROTECTED');
-            }
+        function updateTime() {
+            document.getElementById('stat-time').innerText = "TIME: " + new Date().toLocaleTimeString();
+        }
+
+        function loop() {
+            drawParticles();
+            renderDiamond();
+            updateTime();
+            requestAnimationFrame(loop);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        loop();
+        
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'PrintScreen') { document.body.style.display='none'; alert('SVP-01 PROTECTED'); }
         });
     </script>
 </body>
